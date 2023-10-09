@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
-{% comment %} {% block title %}Home Page{% endblock title %} {% endcomment %}
+{% block title %}Home Page{% endblock title %}
 
 {% block body %}
     {% for post in posts %}
-        {{post.image}} <hr>
+        <a href={% url "feed:detail" %}>View details</a>
+        <p>{{post.text}}</p>
+        {% thumbnail post.image "200x200" crop="center" as im %}
+            <img src={{im.url}} width={{im.width}} height={{im.height}}/>
+        {% endthumbnail %}
+        <hr>
     {% endfor %}
 {% endblock %}
