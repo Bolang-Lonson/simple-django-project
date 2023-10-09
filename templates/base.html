@@ -6,6 +6,13 @@
     <title>{% block title %}PicStar{% endblock title %}</title>
 </head>
 <body>
+    {% if messages %}
+        <ul class="messages">
+            {% for msg in messages %}
+                <li {% if msg.tags %} class="{{ msg.tags}}" {% endif %}>{{ msg }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     {% block body %}{% endblock %}
 </body>
 </html>
