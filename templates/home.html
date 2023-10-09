@@ -4,16 +4,20 @@
 {% block title %}Home Page{% endblock title %}
 
 {% block body %}
-    <a href={% url "feed:post" %}>Add new post &rarr;</a>
-    <hr>
-    {% for post in posts %}
-        <a href={% url "feed:detail" post.id %} style="display: inline-block;">
-            {% comment %} the above django code auto references the detail view url no matter its value {% endcomment %}
-            {{post.text}}<br>
-            {% thumbnail post.image "200x200" crop="center" as im %}
-                <img src={{im.url}} width={{im.width}} height={{im.height}}/>
-            {% endthumbnail %}
-        </a>
-        <hr>
-    {% endfor %}
+
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-sm-6 col-md-3">
+                <div class="card my-4">
+                    {% thumbnail post.image "200x200" crop="center" as im %}
+                        <img src={{im.url}} class="card-img-top" alt="...">
+                    {% endthumbnail %}
+                    <div class="card-body">
+                    <p class="card-text">{{ post.text }}</p>
+                    <a href={% url "feed:detail" post.id %} class="btn btn-primary">View Image</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

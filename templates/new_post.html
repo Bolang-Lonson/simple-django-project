@@ -3,11 +3,12 @@
 {% block title %}Upload a new image{% endblock title %}
 
 {% block body %}
-    <form method='POST' action='' enctype='multipart/form-data'><!-- enctype required for forms submitting files-->
+    <form method='POST' action='' enctype='multipart/form-data' class="col-sm-4 offset-4 py-5 my-5"><!-- enctype required for forms submitting files-->
+        <h2>Upload an image</h2>
         {% csrf_token %} {% comment %} csrf tokens are to ensure that a form is being submitted from your site{% endcomment %}
         {{ form.as_p }}
         <div>
-            <button type='submit'>Submit form</button>
+            <button type='submit' class="btn btn-success btn-lg">Submit form</button>
         </div>
     </form>
 {% endblock body %}
