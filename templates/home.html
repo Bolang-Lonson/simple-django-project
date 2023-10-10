@@ -18,6 +18,12 @@
                     </div>
                 </div>
             </div>
+        {% empty %}
+            <div class="col-sm-6 offset-3 text-center py-5 my-5">
+                <h3>Welcome!</h3>
+                <p>Add your first image</p>
+                <a href={% url "feed:post" %} class="btn btn-lg btn-success">Upload Image</a>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

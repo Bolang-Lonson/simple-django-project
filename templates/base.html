@@ -12,16 +12,13 @@
     <title>{% block title %}PicStar{% endblock title %}</title>
 </head>
 <body>
-    {% if messages %}
-        <ul class="messages">
-            {% for msg in messages %}
-                <li  class="{{ msg.tags}}"></li>
-            {% endfor %}
-        </ul>
-        <div class="bg-{% if msg.tags %}{{ msg.tags }}{% else %}success{% endif %} bg-gradient text-center text-white py-4">{{ msg }}</div>
-    {% endif %}
-
     {% include "includes/navbar.html" %}
+
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="bg-{% if msg.tags %}{{ msg.tags }}{% else %}success{% endif %} bg-gradient text-center text-white py-4">{{ msg }}</div>
+        {% endfor %}
+    {% endif %}
     
     <div class="container">
         {% block body %}{% endblock %}
